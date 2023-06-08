@@ -9,17 +9,14 @@
 @model TravelersBlog.ViewModels.RegisterViewModel
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(u => u.UserName)
-  @Html.TextBoxFor(u => u.UserName)
+  @Html.LabelFor(u => u.Username)
+  @Html.TextBoxFor(u => u.Username)
 
   @Html.LabelFor(u => u.Email)
   @Html.TextBoxFor(u => u.Email)
 
   @Html.LabelFor(u => u.Password)
   @Html.EditorFor(u => u.Password)
-
-  @Html.LabelFor(u => u.ConfirmPassword)
-  @Html.EditorFor(u => u.ConfirmPassword)
 
   <input type="submit" value="Register" />
 }

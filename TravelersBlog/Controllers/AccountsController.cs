@@ -28,8 +28,17 @@ public class AccountsController : Controller
     [HttpPost]
     public ActionResult Register(RegisterViewModel user)
     {
-      RegisterViewModel.Post(user);
-      return RedirectToAction("Index");
+      #nullable enable
+      string registerAttempt = RegisterViewModel.Post(user);
+      #nullable disable
+      if (registerAttempt != null)
+      {
+        View();
+      }
+      else
+      {
+        return RedirectToAction("Index");
+      }
     }
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
