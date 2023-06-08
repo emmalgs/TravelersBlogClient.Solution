@@ -1,0 +1,16 @@
+@if (!ViewData.ModelState.IsValid)
+{
+  @Html.ValidationSummary("Please fix the following error(s) before resubmitting:")
+}
+
+@model TravelersBlog.ViewModels.LoginViewModel
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(u => u.Username)
+  @Html.TextBoxFor(u => u.Username)
+
+  @Html.LabelFor(u => u.Password)
+  @Html.EditorFor(u => u.Password)
+
+  <input type="submit" value="Register" />
+}

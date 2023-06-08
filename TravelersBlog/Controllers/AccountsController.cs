@@ -31,9 +31,23 @@ public class AccountsController : Controller
       RegisterViewModel.Post(user);
       return RedirectToAction("Index");
     }
+    public IActionResult Login()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Login(LoginViewModel user)
+    {
+      LoginViewModel.Post(user);
+      return RedirectToAction("Index");
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+
 }

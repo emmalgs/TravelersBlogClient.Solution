@@ -1,6 +1,4 @@
-using System.Threading.Tasks;
 using RestSharp;
-using TravelersBlog.ViewModels;
 
 namespace TravelersBlog.Models
 {
@@ -12,6 +10,15 @@ namespace TravelersBlog.Models
       RestRequest request = new RestRequest($"api/v1/Users/register", Method.Post);
       request.AddHeader("Content-Type", "application/json");
       request.AddJsonBody(newUser);
+      await client.PostAsync(request);
+    }
+
+    public static async void LoginUser(string user)
+    {
+      RestClient client = new RestClient("http://localhost:5000/");
+      RestRequest request = new RestRequest($"api/v1/Users/login", Method.Post);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(user);
       await client.PostAsync(request);
     }
     public static async Task<string> GetAllCountries()
