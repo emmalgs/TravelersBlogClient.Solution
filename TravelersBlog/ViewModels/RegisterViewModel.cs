@@ -1,17 +1,16 @@
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using TravelersBlog.Models;
 
-namespace ARatsLifeClient.ViewModels
+namespace TravelersBlog.ViewModels
 {
   public class RegisterViewModel
   {
     [Required]
-    [EmailAddress]
-    [Display(Name = "Email Address")]
     public string Email { get; set; }
 
     [Required]
-    [UserName]
-    [Display(nameof = "New Username")]
     public string UserName { get; set; }
 
     [Required]
@@ -23,5 +22,11 @@ namespace ARatsLifeClient.ViewModels
     [Display(Name = "Confirm password")]
     [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
+
+    public static void Post(RegisterViewModel user)
+    {
+      string jsonUser = JsonConvert.SerializeObject(user);
+      ApiHelper.RegisterUser(jsonUser);
+    }
   }
 }
